@@ -2,29 +2,26 @@
 %global __strip /bin/true
 
 Name:           mtail	
-Version:        %{ver}
-Release:        %{rel}%{?dist}
+Version:        %{version}
+Release:        %{release}
 
 Summary:	mtail latest release binary 
 
+Source:		%{name}_%{version}-%{release}_linux_amd64.tar.gz
 Group:		YIG
 License:        Apache-2.0
 URL:		http://github.com/journeymidnight/mtail-rpm
-Source0:	%{name}-%{version}.tar.gz
-BuildRoot:	%(mktemp -ud %{_tmppath}/%{name}-%{version}-XXXXXX)
+BuildRoot:	%(mktemp -ud %{_tmppath}/%{name}_%{version}-%{release}-XXXXXX)
 #BuildRequires:  
 
 %description
 
 
 %prep
-%setup -q -n %{name}-%{version}
+%setup -q -n %{name}_%{version}-%{release}_linux_amd64
 
 
 %build
-#The go build still use source code in GOPATH/src/legitlab/yig/
-#keep git source tree clean, better ways to build?
-#I do not know
 
 %install
 rm -rf %{buildroot}
